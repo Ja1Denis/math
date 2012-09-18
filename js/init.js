@@ -2,13 +2,25 @@
     "use strict";
     window.modules = [];
 
-    $(function () {
-        // all modules should be ready
-        _.each(window.modules, function (m) {
-
-        });
+    $(document).live("pagebeforechange", function (e, data) {
+        console.log(arguments);
+        if (data.toPage[0] == $("#exec").get(0)) {
+            var options = data.options;
+            if (options.pageData && options.pageData.f) {
+                var f = options.pageData.f;
+                console.log(f);
+                prepare();
+            }
+        }
     });
+
+    $(window).bind('beforeunload', function (event) {
+        return "Are you sure?";
+    });
+
+
 })(window);
+
 
 function randomInt(minInclude, maxInclude) {
     //var result = null;
