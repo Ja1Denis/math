@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Math Trainer</title>
+    <title>Math</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0-rc.1/jquery.mobile-1.2.0-rc.1.min.css" />
@@ -18,12 +18,16 @@
     <div data-role="page" id="home">
         <div data-role="header">
             <h1>
-                Math Trainer</h1>
+                Math</h1>
         </div>
         <div data-role="content">
             <ul data-role="listview" data-inset="true">
                 <li><a href="#exec" class="samples-link" data-func="17plus19_62minus36">17 + 19, 62
                     - 36</a></li>
+                <li><a href="#exec" class="samples-link" data-func="plus_minus_up_to_100">Add and substract
+                    up to 100</a></li>
+                <li><a href="#exec" class="samples-link" data-func="mult_divide_up_to_100">Multiply and divide
+                    up to 100</a></li>
                 <!--<li><a href="#exec?f=17plus19_62minus36&a=1">17 + 19, 62 - 36</a></li>
                 <li><a href="#exec?f=17plus19_62minus36">17 + 19, 62 - 36</a></li>-->
             </ul>
@@ -54,7 +58,7 @@
                     </tr>
                 </tbody>
             </table>
-            <input type="button" value="Check my answers" />
+            <a href="#result" data-role="button" data-rel="dialog" id="check">Check my answers</a>
         </div>
         <div data-role="footer">
             <h4>
@@ -62,5 +66,16 @@
         </div>
     </div>
     <!-- /page exec -->
+    <div data-role="page" id="result">
+        <div data-role="header">
+            <h1>
+                Result</h1>
+        </div>
+        <div data-role="content">
+            <div id="message">
+            </div>
+            <a href="docs-dialogs.html" data-role="button" data-rel="back" data-theme="c">OK</a>
+        </div>
+    </div>
 </body>
 </html>
