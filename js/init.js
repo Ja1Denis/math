@@ -140,8 +140,6 @@ function generate_17plus19_62minus36() {
     return pair[0] + type + pair[1];
 }
 
-
-
 function generate_plus_minus_up_to_100() {
     var type = randomInt(0, 1) ? "-" : "+";
     var pair;
