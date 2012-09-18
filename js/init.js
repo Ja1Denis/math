@@ -73,13 +73,16 @@
     });
 
     var lastPrepared;
+    var _template;
 
     function prepare(samples) {
 
         if (_.isEqual(lastPrepared, samples)) return;
         lastPrepared = samples;
         var _tbody = $("#samples tbody");
-        var _template = _tbody.find("tr:first-child").clone();
+        if (!_template) {
+            _template = _tbody.find("tr:first-child").clone();
+        }
         _tbody.empty();
 
         for (var i = 0; i < samples.length; i++) {
