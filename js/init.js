@@ -1,25 +1,36 @@
 ﻿(function (window) {
     "use strict";
-    window.modules = [];
 
     $(document).live("pagebeforechange", function (e, data) {
-        console.log(arguments);
         if (data.toPage[0] == $("#exec").get(0)) {
             var options = data.options;
             if (options.pageData && options.pageData.f) {
                 var f = options.pageData.f;
-                console.log(f);
-                prepare();
+                var samples = unzipString(f).split("l");
+                prepare(samples);
             }
         }
     });
 
-    $(window).bind('beforeunload', function (event) {
-        return "Are you sure?";
+    $("#home").live("pagebeforeshow", function () {
+        $(".samples-link").each(function () {
+            var _a = $(this);
+            var func = window["generate" + _a.data("func")];
+            var samples = _.map(_.range(50), func);
+            var samplesString = samples.join("l");
+            _a.attr("href", "#exec?f=" + encodeURIComponent(zipString(samplesString)));
+        });
     });
 
-
 })(window);
+
+function zipString(s) {
+    return s.replace(/\+/g, 'p').replace(/\-/g, 'm');
+}
+
+function unzipString(s) {
+    return s.replace(/p/g, '+').replace(/m/g, '-');
+}
 
 
 function randomInt(minInclude, maxInclude) {
@@ -57,35 +68,25 @@ function generate17plus19_62minus36() {
             });
     }
 
-    return pair[0] + " " + type + " " + pair[1];
+    return pair[0] + type + pair[1];
 }
 
 function generate_plus_minus_up_to_100() {
 }
 
-function prepare() {
+function prepare(samples) {
     var _tbody = $("#samples tbody");
     var _template = _tbody.find("tr:first-child").clone();
     _tbody.empty();
 
-    for (var i = 0; i < 25; i++) {
 
-        var s = generate17plus19_62minus36();
+    for (var i = 0; i < samples.length; i++) {
+
+        var s = samples[i];
         var _tr = _template.clone();
+        _tr.find("td:first-child").text(s + " = ");
+        _tr.find("input").attr("name", _.uniqueId("answer")).val('');
 
         _tr.appendTo(_tbody);
-        _tr.find("td:first-child").text(s + " = ");
     }
 }
-
-modules.push(
-    {
-        name: "17 + 19, 62 - 36",
-        generate: function (n) {
-            var many
-            for (var i = 0; i < n; i++) {
-
-            }
-        }
-    }
-);
