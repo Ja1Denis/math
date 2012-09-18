@@ -84,7 +84,7 @@ function prepare(samples) {
 
         var s = samples[i];
         var _tr = _template.clone();
-        _tr.find("td:first-child").text(s + " = ");
+        _tr.find("td:first-child").text(s.replace(/([+\-])/g, " $1 ") + " = ");
         _tr.find("input").attr("name", _.uniqueId("answer")).val('');
 
         _tr.appendTo(_tbody);
