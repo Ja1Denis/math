@@ -39,7 +39,7 @@
                 var entered = parseInt(val, 10);
                 //console.log(shouldBe, entered);
                 if (entered != shouldBe) {
-                    incorrect.push(s);
+                    incorrect.push(toHuman(s));
                     $(this).css({ color: "#f00", backgroundColor: "#fee" });
                 }
             }
@@ -86,7 +86,7 @@
 
             var s = samples[i];
             var _tr = _template.clone();
-            _tr.find("td:first-child").html(s.replace(/(\D)/g, " $1 ").replace(/\*/g, "&times;").replace(/\//g, "&divide;") + " = ");
+            _tr.find("td:first-child").html(toHuman(s) + " = ");
             _tr.find("input").attr("name", _.uniqueId("answer")).val('').data("s", s);
 
             _tr.appendTo(_tbody);
@@ -99,6 +99,10 @@
 
     function unzipString(s) {
         return s.replace(/p/g, '+').replace(/m/g, '-').replace(/u/g, '*').replace(/d/g, '/');
+    }
+
+    function toHuman(s) {
+        return s.replace(/(\D)/g, " $1 ").replace(/\*/g, "&times;").replace(/\//g, "&divide;");
     }
 })(window);
 
