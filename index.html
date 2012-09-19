@@ -26,6 +26,19 @@
     </style>
 </head>
 <body>
+    <!-- FB -->
+    <div id="fb-root">
+    </div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+        } (document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- /FB -->
     <div data-role="page" id="home">
         <div data-role="header" data-theme="b">
             <h1>
@@ -48,13 +61,17 @@
                 <a href="https://github.com/evgenyt1/math">View on GitHub</a>
             </h4>
         </div>
+        <div class="fb-like" data-send="true" data-layout="button_count" data-width="450"
+            data-show-faces="true" data-action="recommend" data-font="lucida grande" style="margin: 7px 0 5px 10px;
+            position: relative">
+        </div>
     </div>
     <!-- /page home -->
     <div data-role="page" id="exec">
         <div data-role="header" data-theme="b">
             <h1>
                 Math</h1>
-            <a href="#home" data-icon="home" data-direction="reverse">Index</a>
+            <a href="#home" data-icon="arrow-l" data-direction="reverse">Index</a>
         </div>
         <div data-role="content">
             <table id="samples">
@@ -69,7 +86,8 @@
                     </tr>
                 </tbody>
             </table>
-            <a href="#result" data-role="button" data-rel="dialog" id="check" data-theme="b">Check my answers</a>
+            <a href="#result" data-role="button" data-rel="dialog" id="check" data-theme="b">Check
+                my answers</a>
         </div>
         <div data-role="footer" data-theme="b">
             <h4>
