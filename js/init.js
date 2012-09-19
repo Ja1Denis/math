@@ -177,7 +177,7 @@ function generate_mult_divide_up_to_100() {
             break;
         case "/":
             pair = randomPair(0, 100, 1, 10, function (a, b) {
-                return a % b == 0;
+                return a % b == 0 && a / b <= 10;
             });
             break;
     }
