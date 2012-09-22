@@ -1,7 +1,7 @@
 ﻿(function (window) {
     "use strict";
 
-    var howMany = 20;
+    var howMany = 30;
 
     $(document).live("pagebeforechange", function (e, data) {
         if (data.toPage[0] == $("#exec").get(0)) {
